@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import Button from "../button";
+// import { useEffect, useState } from "react";
+// import Button from "../button";
 import SongButton from "../songButton";
 
 import styles from "./board.module.scss";
 
 const Board = ({ songs }) => {
-  const [sound, setSound] = useState(new Audio(songs[0]));
-  const [speed, setSpeed] = useState(1);
+  // const [sound, setSound] = useState(new Audio(songs[0]));
+  // const [speed, setSpeed] = useState(1);
 
-  useEffect(() => {
-    sound.playbackRate = speed;
-  }, [speed, sound]);
+  // useEffect(() => {
+  //   sound.playbackRate = speed;
+  // }, [speed, sound]);
 
   const backColors = (arg) => {
     const colors = ["red", "green", "yellow", "blue", "black"];
@@ -29,34 +29,34 @@ const Board = ({ songs }) => {
     return colors[res];
   };
 
-  const playSound = () => {
-    sound.play();
-  };
-  const pauseSound = () => {
-    sound.pause();
-  };
+  // const playSound = () => {
+  //   sound.play();
+  // };
+  // const pauseSound = () => {
+  //   sound.pause();
+  // };
 
-  const interruptSound = () => {
-    sound.pause();
-    sound.currentTime = 0;
-  };
+  // const interruptSound = () => {
+  //   sound.pause();
+  //   sound.currentTime = 0;
+  // };
 
-  const changeSpeed = (divison) => {
-    let res = speed;
-    if (divison && speed !== 0.5) {
-      res = speed / 2;
-    }
-    if (!divison && speed !== 2) {
-      res = speed * 2;
-    }
+  // const changeSpeed = (divison) => {
+  //   let res = speed;
+  //   if (divison && speed !== 0.5) {
+  //     res = speed / 2;
+  //   }
+  //   if (!divison && speed !== 2) {
+  //     res = speed * 2;
+  //   }
 
-    setSpeed(res);
-  };
+  //   setSpeed(res);
+  // };
 
-  const changeSound = (arg) => {
-    interruptSound();
-    setSound(new Audio(arg));
-  };
+  // const changeSound = (arg) => {
+  //   interruptSound();
+  //   setSound(new Audio(arg));
+  // };
 
   return (
     <div>
@@ -64,19 +64,20 @@ const Board = ({ songs }) => {
         <div className={styles.mainComponent}>
           {songs.map((value, index) => (
             <SongButton
-              onClick={() => changeSound(value)}
+              song={value}
+              // onClick={() => changeSound(value)}
               color={backColors(index)}
             />
           ))}
         </div>
       </div>
-      <div className={styles.component}>
+      {/* <div className={styles.component}>
         <Button onClick={playSound} text={"play"} />
         <Button onClick={pauseSound} text={"pause"} />
         <Button onClick={() => changeSpeed(true)} text={"slow down"} />
         <Button onClick={() => changeSpeed(false)} text={"speed up"} />
         <Button onClick={interruptSound} text={"interrupt"} />
-      </div>
+      </div> */}
     </div>
   );
 };

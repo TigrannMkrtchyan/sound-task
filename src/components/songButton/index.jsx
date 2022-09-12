@@ -1,13 +1,28 @@
 import styles from "./songButton.module.scss";
 
-const SongButton = ({ onClick, color}) => {
+const SongButton = ({ color, song }) => {
+  const sound = new Audio(song);
+
+  const playSound = () => {
+    sound.play();
+  };
+
+  const interruptSound = () => {
+    sound.pause();
+    sound.currentTime = 0;
+  };
+
+  const play = () => {
+    interruptSound();
+    playSound();
+  };
 
   return (
     <div
       style={{
         backgroundColor: `${color}`,
       }}
-      onClick={onClick}
+      onClick={play}
       className={styles.mainComponent}
     ></div>
   );
