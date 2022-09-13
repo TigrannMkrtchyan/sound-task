@@ -1,12 +1,15 @@
-import Board from "./components/board";
-import { songs, songs2 } from "./data/data";
+import React from "react";
+import MainRoutes from "./components/mainRouters";
+import NavigationBar from "./components/navigationBar";
+import { BrowserRouter } from "react-router-dom";
+import './app.scss'
+
 
 function App() {
-  return (
-    <div >
-      <Board songs={songs} />
-      <Board songs={songs2} />
-    </div>
+  return (<BrowserRouter>
+    <NavigationBar />
+    <MainRoutes />
+  </BrowserRouter>
   );
 }
 

@@ -14,18 +14,10 @@ const SongButton = ({ speed, color, song, interrupt, paused, played }) => {
   }, [interrupt]);
 
   useEffect(() => {
-    if (playing) {
-      sound.pause();
-    }
+    sound.pause();
   }, [paused]);
 
   useEffect(() => {
-    // sound.ended()
-    // sound.ontransitionend()
-    // sound.onplaying()
-    // sound.onended()
-    // sound.duration()
-
     if (playing) {
       sound.play();
     }
@@ -35,6 +27,10 @@ const SongButton = ({ speed, color, song, interrupt, paused, played }) => {
     sound.play();
     setPlaying(true);
   };
+
+  sound.addEventListener("ended", (event) => {
+    setPlaying(false);
+  });
 
   const interruptSound = () => {
     setPlaying(false);
@@ -54,7 +50,7 @@ const SongButton = ({ speed, color, song, interrupt, paused, played }) => {
       }}
       onClick={play}
       className={styles.mainComponent}
-    ></div>
+    />
   );
 };
 
